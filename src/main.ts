@@ -19,7 +19,7 @@ async function bootstrap() {
       transport: Transport.RMQ,
       options: {
         urls: [amqpUri],
-        queue: 'users_queue',
+        queue: configService.get<string>('RABBIT_USER_QUEUE') || 'users:queue',
         queueOptions: { durable: false },
       },
     },
